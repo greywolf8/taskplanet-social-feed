@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "name": "taskplanet-backend",
+  "type": "web",
+  "env": "node",
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    }
+  },
+  "startCommand": "npm start",
+  "healthCheckPath": "/api/health",
+  "envVars": {
+    "MONGO_URI": "@mongodb-uri",
+    "JWT_SECRET": "@jwt-secret",
+    "NODE_ENV": "production",
+    "FRONTEND_URL": "@frontend-url"
+  },
+  "autoDeploy": true,
+  "plan": "free"
+}
