@@ -325,29 +325,29 @@ body {
 }
 
 /* File input styles */
-.file\:border-0::file-selector-button {
+.file-border-0::file-selector-button {
   border: 0;
 }
 
-.file\:bg-transparent::file-selector-button {
+.file-bg-transparent::file-selector-button {
   background-color: transparent;
 }
 
-.file\:text-sm::file-selector-button {
+.file-text-sm::file-selector-button {
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
 
-.file\:font-medium::file-selector-button {
+.file-font-medium::file-selector-button {
   font-weight: 500;
 }
 
-.file\:text-foreground::file-selector-button {
+.file-text-foreground::file-selector-button {
   color: hsl(var(--foreground));
 }
 
 /* Placeholder styles */
-.placeholder\:text-muted-foreground::placeholder {
+.placeholder-text-muted-foreground::placeholder {
   color: hsl(var(--muted-foreground));
 }
 
