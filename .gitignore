@@ -44,3 +44,6 @@ mongodb-data/
 # Temporary files
 *.tmp
 *.temp
+
+# MongoDB binaries
+backend/mongodb-*/
