@@ -1,0 +1,108 @@
+.tabsContainer {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 20px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+.filterTabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.filterTabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  padding: 8px 16px;
+  border: none;
+  background-color: #f0f0f0;
+  color: #666666;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tab:hover {
+  background-color: #e0e0e0;
+}
+
+.tab.active {
+  background-color: #1e88e5;
+  color: white;
+}
+
+.promotionSubfilters {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.promotionSubfilters::-webkit-scrollbar {
+  display: none;
+}
+
+.subTab {
+  padding: 6px 12px;
+  border: none;
+  background-color: #f8f9fa;
+  color: #666666;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.subTab:hover {
+  background-color: #e9ecef;
+}
+
+.subTab.activeSub {
+  background-color: #1e88e5;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .tabsContainer {
+    padding: 12px;
+    margin: 16px 0;
+  }
+
+  .filterTabs {
+    gap: 6px;
+  }
+
+  .tab {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .promotionSubfilters {
+    gap: 6px;
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+
+  .subTab {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}

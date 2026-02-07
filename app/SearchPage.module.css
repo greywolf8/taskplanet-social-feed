@@ -1,0 +1,359 @@
+.searchPage {
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  padding-top: 0;
+}
+
+.searchHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.backButton:hover {
+  background-color: #f5f5f5;
+}
+
+.searchBar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 24px;
+  padding: 8px 16px;
+  gap: 8px;
+}
+
+.searchBar svg {
+  color: #666666;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  color: #000000;
+}
+
+.searchInput::placeholder {
+  color: #666666;
+}
+
+.tabsContainer {
+  position: sticky;
+  top: 60px;
+  background-color: #ffffff;
+  padding: 16px;
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 90;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tabsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  padding: 8px 16px;
+  border: none;
+  background-color: #f0f0f0;
+  color: #666666;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tab:hover {
+  background-color: #e0e0e0;
+}
+
+.tab.activeTab {
+  background-color: #1e88e5;
+  color: white;
+}
+
+.count {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.resultsContainer {
+  padding: 16px;
+  margin-top: 120px;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: #666666;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #e0e0e0;
+  border-top: 3px solid #1e88e5;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.noResults {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666666;
+}
+
+.noResults p {
+  font-size: 16px;
+  margin: 0;
+}
+
+.resultsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* User Cards */
+.userCard {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.userAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #1e88e5;
+}
+
+.userInfo {
+  flex: 1;
+}
+
+.userName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0 0 4px 0;
+}
+
+.userHandle {
+  font-size: 14px;
+  color: #666666;
+  margin: 0;
+}
+
+.followBtn {
+  padding: 8px 16px;
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.followBtn:hover {
+  background-color: #0d47a1;
+}
+
+.followBtn.following {
+  background-color: #f0f0f0;
+  color: #666666;
+}
+
+.followBtn.following:hover {
+  background-color: #e0e0e0;
+}
+
+/* Post Cards */
+.postCard {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.postHeader {
+  margin-bottom: 12px;
+}
+
+.postAuthor {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e88e5;
+}
+
+.postContent {
+  font-size: 16px;
+  color: #000000;
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+}
+
+.postStats {
+  display: flex;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.stat {
+  font-size: 14px;
+  color: #666666;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Promotion Cards */
+.promoCard {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.promoHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.promoTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+  flex: 1;
+}
+
+.promoType {
+  padding: 4px 8px;
+  background-color: #e3f2fd;
+  color: #1e88e5;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.promoCompany {
+  font-size: 14px;
+  color: #666666;
+  margin: 0 0 12px 0;
+}
+
+.promoReward {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.rewardLabel {
+  font-size: 14px;
+  color: #666666;
+}
+
+.rewardAmount {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e88e5;
+}
+
+@media (max-width: 768px) {
+  .searchHeader {
+    padding: 8px 12px;
+  }
+
+  .searchInput {
+    font-size: 14px;
+  }
+
+  .tabsContainer {
+    padding: 12px;
+    gap: 6px;
+  }
+
+  .tab {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .resultsContainer {
+    padding: 12px;
+    margin-top: 100px;
+  }
+
+  .userCard {
+    padding: 12px;
+  }
+
+  .userAvatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .userName {
+    font-size: 14px;
+  }
+
+  .userHandle {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,10 @@
+.defaultAvatar {
+  background-color: #ff6b35;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ff6b35;
+  overflow: hidden;
+  flex-shrink: 0;
+}

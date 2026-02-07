@@ -1,0 +1,47 @@
+.feedContainer {
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  padding-bottom: 80px;
+}
+
+.feedContent {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 70px;
+}
+
+.mainFeed {
+  width: 100%;
+  max-width: 600px;
+}
+
+.postsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.loadingText,
+.emptyText {
+  text-align: center;
+  color: #666666;
+  padding: 40px 20px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .feedContent {
+    padding: 10px;
+    margin-top: 60px;
+  }
+
+  .mainFeed {
+    max-width: 100%;
+  }
+
+  .feedContainer {
+    padding-bottom: 70px;
+  }
+}

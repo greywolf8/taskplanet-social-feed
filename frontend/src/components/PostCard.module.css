@@ -1,0 +1,417 @@
+.postCard {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.authorInfo {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #1e88e5;
+}
+
+.authorDetails {
+  flex: 1;
+}
+
+.authorName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+}
+
+.authorHandle {
+  font-size: 14px;
+  color: #666666;
+  margin: 2px 0;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #666666;
+  margin: 2px 0 0 0;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.deleteBtn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #d32f2f;
+  padding: 4px 8px;
+}
+
+.deleteBtn:hover {
+  background-color: #ffebee;
+  border-radius: 6px;
+}
+
+.followBtn {
+  padding: 6px 12px;
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.followBtn:hover {
+  background-color: #0d47a1;
+}
+
+.followBtn.following {
+  background-color: #e0e0e0;
+  color: #666666;
+}
+
+.followBtn.following:hover {
+  background-color: #d0d0d0;
+  color: #333333;
+}
+
+.followBtn.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.followBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.content {
+  margin-bottom: 16px;
+}
+
+.text {
+  font-size: 16px;
+  color: #000000;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.contentImage {
+  width: 100%;
+  border-radius: 8px;
+  max-height: 400px;
+  object-fit: cover;
+}
+
+.offerwallStats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.offerwallCard {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+}
+
+.offerwallTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.offerwallStatus {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.offerwallStatus.completed {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+}
+
+.offerwallStatus.ongoing {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.offerwallStats {
+  font-size: 13px;
+  color: #666666;
+  margin-bottom: 4px;
+}
+
+.offerwallPoints {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e88e5;
+  margin-bottom: 8px;
+}
+
+.loadMoreBtn {
+  background-color: #f0f0f0;
+  color: #666666;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.loadMoreBtn:hover {
+  background-color: #e0e0e0;
+}
+
+.callToAction {
+  background: linear-gradient(135deg, #1e88e5, #42a5f5);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.interactions {
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 12px;
+}
+
+.interactionBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  color: #666666;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.interactionBtn:hover {
+  background-color: #f5f5f5;
+  color: #1e88e5;
+}
+
+.interactionBtn svg {
+  width: 20px;
+  height: 20px;
+  transition: all 0.2s ease;
+}
+
+.interactionBtn span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.interactionBtn.liked {
+  color: #e91e63;
+}
+
+.interactionBtn.liked svg {
+  fill: #e91e63;
+  stroke: #e91e63;
+}
+
+.interactionBtn.liked:hover {
+  color: #c2185b;
+  background-color: #fce4ec;
+}
+
+.commentsSection {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.commentsList {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.comment {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.commentAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #ff6b35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.commentAvatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.commentContent {
+  flex: 1;
+}
+
+.commentAuthor {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0 0 4px 0;
+}
+
+.commentText {
+  font-size: 14px;
+  color: #333333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.deleteCommentBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  color: #666666;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 12px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.comment:hover .deleteCommentBtn {
+  opacity: 1;
+}
+
+.deleteCommentBtn:hover {
+  background-color: #f0f0f0;
+}
+
+.noComments {
+  text-align: center;
+  color: #666666;
+  font-size: 14px;
+  margin: 20px 0;
+}
+
+.commentInputContainer {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.commentInputAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #ff6b35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.commentInputAvatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.commentForm {
+  flex: 1;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.commentInput {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  background-color: #f8f9fa;
+}
+
+.commentInput:focus {
+  border-color: #1e88e5;
+  background-color: #ffffff;
+}
+
+.commentInput::placeholder {
+  color: #999999;
+}
+
+.commentSubmitBtn {
+  padding: 8px 16px;
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.commentSubmitBtn:hover:not(:disabled) {
+  background-color: #0d47a1;
+}
+
+.commentSubmitBtn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

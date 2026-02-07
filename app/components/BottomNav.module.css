@@ -1,0 +1,133 @@
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 0;
+  z-index: 1000;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  color: #666666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  min-width: 60px;
+  text-decoration: none;
+}
+
+.navItem:hover {
+  background-color: #f5f5f5;
+  color: #1e88e5;
+}
+
+.navItem span {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.navItem svg {
+  width: 24px;
+  height: 24px;
+  transition: all 0.2s ease;
+}
+
+.socialButton {
+  background-color: #1e88e5;
+  color: white;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  margin: 0 -8px;
+  box-shadow: 0 4px 12px rgba(30, 136, 229, 0.3);
+  transform: translateY(-8px);
+}
+
+.socialButton:hover {
+  background-color: #0d47a1;
+  transform: translateY(-8px) scale(1.05);
+}
+
+.socialButton span {
+  display: none;
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.starWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.starBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: #ff6b35;
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 4px;
+  border-radius: 8px;
+  min-width: 16px;
+  text-align: center;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .bottomNav {
+    padding: 6px 0;
+  }
+  
+  .navItem {
+    min-width: 50px;
+    padding: 6px 8px;
+  }
+  
+  .navItem span {
+    font-size: 11px;
+  }
+  
+  .navItem svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .socialButton {
+    width: 48px;
+    height: 48px;
+    margin: 0 -6px;
+    transform: translateY(-6px);
+  }
+  
+  .socialButton:hover {
+    transform: translateY(-6px) scale(1.05);
+  }
+  
+  .starBadge {
+    font-size: 9px;
+    padding: 1px 3px;
+    min-width: 14px;
+  }
+}

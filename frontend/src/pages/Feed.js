@@ -20,29 +20,12 @@ function Feed() {
   const filters = ["All Posts", "For You", "Most Liked", "Most Commented"];
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        setLoading(true);
-        const response = await postsAPI.getAllPosts(activeFilter, sortBy);
-        setPosts(response.data);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    fetchPosts();
+  }, [activeFilter, sortBy]);
 
-    if (user) {
-      fetchPosts();
-    }
-  }, [user, activeFilter, sortBy]);
-
-  const handleLike = async (postId) => {
+  const fetchPosts = async () => {
     try {
-      await postsAPI.likePost(postId);
-      setPosts(posts.map(post => 
-        post.id === postId ? { ...post, likes: post.likes + 1 } : post
-      ));
+      setLoading(true);
       const response = await postsAPI.getAllPosts(
         activeFilter === "All Posts" ? undefined : activeFilter,
         sortBy === "newest" ? undefined : sortBy
