@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "name": "taskplanet-frontend",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html",
+      "headers": {
+        "X-Frame-Options": "DENY",
+        "X-Content-Type-Options": "nosniff"
+      }
+    }
+  ],
+  "env": {
+    "REACT_APP_API_BASE_URL": "https://taskplanet-social-feed.onrender.com/api"
+  }
+}
