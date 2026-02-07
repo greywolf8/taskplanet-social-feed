@@ -351,13 +351,9 @@ body {
   color: hsl(var(--muted-foreground));
 }
 
-/* Peer disabled styles */
-.peer-disabled:peer-disabled {
-  cursor: not-allowed;
-}
-
-.peer-disabled:opacity-70:peer-disabled {
-  opacity: 0.7;
+/* Min height */
+.min-h-\[80px\] {
+  min-height: 80px;
 }
 
 /* Min height */
