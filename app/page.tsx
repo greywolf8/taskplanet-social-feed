@@ -1,16 +1,16 @@
 'use client';
 
 import React, { useState, useEffect, useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { postsAPI } from "../services/api";
-import Header from "../components/Header";
-import CreatePost from "../components/CreatePost";
-import PostCard from "../components/PostCard";
-import FilterTabs from "../components/FilterTabs";
-import BottomNav from "../components/BottomNav";
+import { AuthContext } from "./context/AuthContext";
+import { postsAPI } from "./services/api";
+import Header from "./components/Header";
+import CreatePost from "./components/CreatePost";
+import PostCard from "./components/PostCard";
+import FilterTabs from "./components/FilterTabs";
+import BottomNav from "./components/BottomNav";
 import styles from "./Feed.module.css";
 
-function Feed() {
+function HomePage() {
   const { user, logout } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -24,9 +24,10 @@ function Feed() {
       try {
         setLoading(true);
         const response = await postsAPI.getAllPosts(activeFilter, sortBy);
-        setPosts(response.data);
+        setPosts(response.data || []);
       } catch (error) {
         console.error("Error fetching posts:", error);
+        setPosts([]);
       } finally {
         setLoading(false);
       }
@@ -43,82 +44,112 @@ function Feed() {
       setPosts(posts.map(post => 
         post.id === postId ? { ...post, likes: post.likes + 1 } : post
       ));
-      const response = await postsAPI.getAllPosts(
-        activeFilter === "All Posts" ? undefined : activeFilter,
-        sortBy === "newest" ? undefined : sortBy
-      );
-      setPosts(response.data);
     } catch (error) {
-      console.error("Error fetching posts:", error);
-    } finally {
-      setLoading(false);
+      console.error("Error liking post:", error);
     }
   };
 
-  const handlePostCreated = (newPost) => {
-    setPosts([newPost, ...posts]);
+  const handleCreatePost = async (newPost) => {
+    try {
+      const response = await postsAPI.createPost(newPost.content, newPost.image, newPost.category);
+      setPosts([response.data, ...posts]);
+    } catch (error) {
+      console.error("Error creating post:", error);
+    }
   };
 
-  const handlePostDeleted = (postId) => {
-    setPosts(posts.filter((post) => post._id !== postId));
+  const handleDeletePost = async (postId) => {
+    try {
+      await postsAPI.deletePost(postId);
+      setPosts(posts.filter(post => post.id !== postId));
+    } catch (error) {
+      console.error("Error deleting post:", error);
+    }
   };
 
-  const handlePostLiked = (updatedPost) => {
-    setPosts(
-      posts.map((post) => (post._id === updatedPost._id ? updatedPost : post))
-    );
+  const handleAddComment = async (postId, text) => {
+    try {
+      const response = await postsAPI.addComment(postId, text);
+      setPosts(posts.map(post => 
+        post.id === postId ? response.data : post
+      ));
+    } catch (error) {
+      console.error("Error adding comment:", error);
+    }
   };
 
-  const handleCommentAdded = (updatedPost) => {
-    setPosts(
-      posts.map((post) => (post._id === updatedPost._id ? updatedPost : post))
-    );
+  const handleDeleteComment = async (postId, commentId) => {
+    try {
+      const response = await postsAPI.deleteComment(postId, commentId);
+      setPosts(posts.map(post => 
+        post.id === postId ? response.data : post
+      ));
+    } catch (error) {
+      console.error("Error deleting comment:", error);
+    }
   };
 
-  const handleCommentDeleted = (postId, updatedPost) => {
-    setPosts(
-      posts.map((post) => (post._id === postId ? updatedPost : post))
-    );
-  };
-
-  return (
-    <div className={styles.feedContainer}>
-      <Header user={user} onLogout={logout} />
-
-      <div className={styles.feedContent}>
-        <div className={styles.mainFeed}>
-          <CreatePost onPostCreated={handlePostCreated} />
-
-          <FilterTabs
-            filters={filters}
-            activeFilter={activeFilter}
-            onFilterChange={setActiveFilter}
-            sortBy={sortBy}
-            onSortChange={setSortBy}
-          />
-
-          <div className={styles.postsList}>
-            {loading && <p className={styles.loadingText}>Loading posts...</p>}
-            {!loading && posts.length === 0 && (
-              <p className={styles.emptyText}>No posts yet. Be the first to post!</p>
-            )}
-            {posts.map((post) => (
-              <PostCard
-                key={post._id}
-                post={post}
-                onPostDeleted={handlePostDeleted}
-                onPostLiked={handlePostLiked}
-                onCommentAdded={handleCommentAdded}
-                onCommentDeleted={handleCommentDeleted}
-              />
-            ))}
+  // If user is not logged in, show login form
+  if (!user) {
+    return (
+      <div className={styles.feed}>
+        <div className={styles.content}>
+          <div className={styles.authPrompt}>
+            <h2>Welcome to TaskPlanet</h2>
+            <p>Please log in to continue</p>
+            <div className={styles.authButtons}>
+              <button onClick={() => window.location.href = '/login'} className={styles.authButton}>
+                Login
+              </button>
+              <button onClick={() => window.location.href = '/signup'} className={styles.authButton}>
+                Sign Up
+              </button>
+            </div>
           </div>
         </div>
       </div>
+    );
+  }
 
+  // If user is logged in, show the feed
+  return (
+    <div className={styles.feed}>
+      <Header user={user} onLogout={logout} />
+      <div className={styles.content}>
+        <CreatePost onCreatePost={handleCreatePost} />
+        <FilterTabs 
+          filters={filters}
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+        />
+        <div className={styles.postsContainer}>
+          {loading ? (
+            <div className={styles.loader}>Loading posts...</div>
+          ) : posts.length === 0 ? (
+            <div className={styles.emptyState}>
+              <h3>No posts yet</h3>
+              <p>Be the first to share something!</p>
+            </div>
+          ) : (
+            posts.map(post => (
+              <PostCard 
+                key={post.id} 
+                post={post} 
+                onLike={handleLike}
+                onDelete={handleDeletePost}
+                onAddComment={handleAddComment}
+                onDeleteComment={handleDeleteComment}
+                currentUserId={user?.id}
+              />
+            ))
+          )}
+        </div>
+      </div>
       <BottomNav user={user} />
     </div>
   );
 }
 
-export default Feed;
+export default HomePage;
